@@ -4,8 +4,8 @@
 from vaspy.electro import DosX
 
 
-def vasp_start(INCAR, POSCAR, OUTCAR, DOSCAR):
-    dos = DosX(filename=DOSCAR)
+def vasp_start(DOS_SUM):
+    dos = DosX(filename=DOS_SUM)
     dos.plotsum(0, (1, 100))
 
 
@@ -13,11 +13,5 @@ if __name__ == '__main__':
     from os.path import abspath, join
 
     parameters_prefix = abspath('./parameters')
-    INCAR = join(parameters_prefix, "INCAR")
-    POSCAR = join(parameters_prefix, "POSCAR")
-    OUTCAR = join(parameters_prefix, "OUTCAR")
-    DOSCAR = join(parameters_prefix, "DOSCAR")
-
-    vasp_start(
-        INCAR, POSCAR, OUTCAR, DOSCAR
-    )
+    DOS_SUM = join(parameters_prefix, "DOS_SUM")
+    vasp_start(DOS_SUM)
